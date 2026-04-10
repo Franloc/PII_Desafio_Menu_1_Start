@@ -1,17 +1,44 @@
-using System.Collections.Generic;
-
 namespace Ucu.Poo.Restaurant
 {
-    /// <summary>
-    /// Representa una mesa en el restaurante.
-    /// </summary>
     public class Table
     {
-        private List<Dish> order = new List<Dish>();
-
+        private int number;
+        public int Number 
+        {
+            get {return this.number;} set {this.number=value;}
+        }
+        private bool isOccupied;
+        public bool IsOccupied
+        {
+            get {return this.isOccupied;} set {this.isOccupied=value;}
+        }
+        private Order order;
+        public Order Order
+        {
+            get {return this.Order;} set {this.Order=value;}
+        }
+        public Table(int number, Order order)
+        {
+            this.Number=number;
+            this.IsOccupied=false;
+            this.Order=order;
+        }
+        public void Occupy()
+        {
+            IsOccupied=true;
+        }
+        public void Free()
+        {
+            IsOccupied=false;
+            order.Orders.Clear();
+        }
+        public void AddToOrder(Dish dish)
+        {
+            order.Orders.Add(dish);
+        }
         public bool HasOrders()
         {
-            return this.order.Count > 0;
+            return this.order.Orders.Count > 0;
         }
     }
 }
