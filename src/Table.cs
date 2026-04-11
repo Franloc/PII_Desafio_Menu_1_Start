@@ -1,6 +1,7 @@
 namespace Ucu.Poo.Restaurant
 {
     public class Table
+    // La clase Table tiene la responsabilidad de gestionar su estado (ocupada o no ocupada) y la orden asociada
     {
         private int number;
         public int Number 
@@ -15,13 +16,12 @@ namespace Ucu.Poo.Restaurant
         private Order order;
         public Order Order
         {
-            get {return this.Order;} set {this.Order=value;}
+            get {return this.order;} set {this.order=value;}
         }
-        public Table(int number, Order order)
+        public Table(int number)
         {
             this.Number=number;
             this.IsOccupied=false;
-            this.Order=order;
         }
         public void Occupy()
         {
@@ -30,15 +30,19 @@ namespace Ucu.Poo.Restaurant
         public void Free()
         {
             IsOccupied=false;
-            order.Orders.Clear();
+            order.Clear();
         }
-        public void AddToOrder(Dish dish)
+        public void AddToOrder(Dish dish) // Le da a order la responsabilidad de agregar un plato a la orden
         {
-            order.Orders.Add(dish);
+            order.AddDish(dish);
         }
         public bool HasOrders()
         {
             return this.order.Orders.Count > 0;
+        }
+        public void AssignOrder(Order order) // AssignOrder permite que hayan pedidos que sean para delivery y no tengan mesa
+        {
+           this.order = order;
         }
     }
 }

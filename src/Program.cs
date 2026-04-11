@@ -15,6 +15,8 @@ namespace Ucu.Poo.Restaurant
             Waiter waiter = new Waiter("John");
             waiter.AssignTable(oneTable);
             oneTable.Occupy();
+            Order order = new Order(false);
+            oneTable.AssignOrder(order);
             waiter.TakeOrder(oneTable, burger);
             Console.WriteLine(
                  $"La mesa {oneTable.Number} está ocupada: {oneTable.IsOccupied} " +

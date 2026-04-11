@@ -3,6 +3,7 @@ using System.Collections.Generic;
 namespace Ucu.Poo.Restaurant
 {
     public class Waiter
+    // La clase Waiter tiene la responsabilidad de asignar mesas y tomar órdenes
     {
         private string name;
         public string Name
